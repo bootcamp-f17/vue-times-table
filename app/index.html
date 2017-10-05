@@ -2,11 +2,53 @@
 <html>
 <head>
   <title>Vue Times Table</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="container">
 
-  <h1>Vue Times Table</h1>
+  <h1 class="mt-5 mb-4">Vue Times Table</h1>
+
+  <div id="times-table">
+    
+    <div class="row justify-content-center">
+      <div class="col-m-6">
+        <div class="input-group p-3">
+          <span class="input-group-addon">Rows</span>
+          <input type="text" v-model.number="numberOfRows" class="form-control">
+        </div>
+      </div>
+      <div class="col-m-6">
+        <div class="input-group p-3">
+          <span class="input-group-addon">Columns</span>
+          <input type="text" v-model.number="numberOfColumns" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <table class="mt-4">
+      <tr>
+        <th>X</th>
+        <th v-for="column in numberOfColumns">
+          {{ column }}
+        </th>
+      </tr>
+
+      <tr v-for="row in numberOfRows">
+        <th>{{ row }}</th>
+        <td v-for="column in numberOfColumns">
+          {{ row * column }}
+        </td>
+      </tr>
+
+    </table>
+
+
+
+
+
+  </div>
+
 
   <script src="https://unpkg.com/vue"></script>
   <script src="main.js"></script>
